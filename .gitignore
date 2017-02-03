@@ -1,3 +1,11 @@
+﻿# .gitignore
+
+# Cordova-related directories
+bin/
+bld/
+plugins/
+platforms/
+
 # Logs
 logs
 *.log

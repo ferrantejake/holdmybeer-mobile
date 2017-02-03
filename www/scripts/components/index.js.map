@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../scripts/components/index.ts"],"names":[],"mappings":";;IAIS,gCAAU;IAAE,oCAAY;IAAE,wBAAM","sourcesContent":["import * as connection from './connection';\r\nimport * as splashScreen from './splashScreen';\r\nimport * as camera from './camera';\r\n\r\nexport { connection, splashScreen, camera };"]}
