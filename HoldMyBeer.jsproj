@@ -81,7 +81,7 @@
     <ExcludedItems>bin;bld;platforms;node_modules;simulation</ExcludedItems>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="**\**" Exclude="**\platforms\**;**\bin\**;**\bld\**;**\node_modules\**;**\simulation\**;BlankCordovaApp1.*" />
+    <Content Include="**\**" Exclude="**\platforms\**;**\bin\**;**\bld\**;**\node_modules\**;**\simulation\**;HoldMyBeer.*" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="config.xml">
