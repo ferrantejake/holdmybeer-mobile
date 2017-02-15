@@ -15,18 +15,25 @@ define(["require", "exports", "./components/index"], function (require, exports,
     function onDeviceReady() {
         // Log that the device has been loaded correctly.
         console.log('Device ready');
-        // Hide the splash screen
-        setTimeout(index_1.splashScreen.hide, 3000);
         // Add event event listeners (look at onPause and onResume for more info).
+        applyEventListeners();
+    }
+    function applyEventListeners() {
         document.addEventListener('pause', onPause, false);
         document.addEventListener('resume', onResume, false);
-        var parentElement = document.getElementById('deviceready');
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-        // Reload all components (see helper function below);
-        reloadComponents();
+        document.getElementById('signInButton').addEventListener('click', removeSignIn);
+        document.getElementById('facebook').addEventListener('click', login);
+        document.getElementById('google').addEventListener('click', login);
+        document.getElementById('myspace').addEventListener('click', login);
+        document.getElementById('switchFriends').addEventListener('click', goToFriends);
+        document.getElementById('switchRecommendations').addEventListener('click', goToRec);
+        document.getElementById('goToCam').addEventListener('click', goToCamera);
+        document.getElementById('camera').addEventListener('click', function (e) {
+            navigator.camera.getPicture(onSuccess, onFail, {
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL
+            });
+        });
     }
     // Indicates the user has left the application
     function onPause() {
@@ -38,17 +45,36 @@ define(["require", "exports", "./components/index"], function (require, exports,
         console.log("The application has been resumed.");
         // TODO: This application has been reactivated. Restore application state here.
     }
-    // Load the components for the application.
-    function reloadComponents() {
-        index_1.connection.getConnectionType();
-        index_1.camera.load();
-        // Show some custom information
-        var connectedElem = document.getElementById('connected');
-        var connectionElem = document.getElementById('connection');
-        var platformElem = document.getElementById('platform');
-        connectedElem.innerText = index_1.connection.isConnected() ? "true" : "false";
-        connectionElem.innerText = index_1.connection.getConnectionTypeAsString();
-        platformElem.innerHTML = navigator.platform;
+    function removeSignIn() {
+        document.getElementById('signIn').setAttribute('style', 'display:none;');
+        document.getElementById('socialMedia').setAttribute('style', 'display:block;');
+    }
+    function login() {
+        document.getElementById('socialMedia').setAttribute('style', 'display:none;');
+        document.getElementById('cameraScreen').setAttribute('style', 'display:block;');
+    }
+    function goToFriends() {
+        document.getElementById('cameraScreen').setAttribute('style', 'display:none;');
+        document.getElementById('recommendations').setAttribute('style', 'display:none;');
+        document.getElementById('friends').setAttribute('style', 'display:block;');
+    }
+    function goToRec() {
+        document.getElementById('cameraScreen').setAttribute('style', 'display:none;');
+        document.getElementById('recommendations').setAttribute('style', 'display:block;');
+        document.getElementById('friends').setAttribute('style', 'display:none;');
+    }
+    function goToCamera() {
+        console.log("clicked");
+        document.getElementById('cameraScreen').setAttribute('style', 'display:block;');
+        document.getElementById('recommendations').setAttribute('style', 'display:none;');
+        document.getElementById('friends').setAttribute('style', 'display:none;');
+    }
+    function onSuccess(imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+    }
+    function onFail(message) {
+        alert('Failed because: ' + message);
     }
 });
 //# sourceMappingURL=application.js.map

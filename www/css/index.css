@@ -32,15 +32,12 @@ body {
 }
 
 .app {
-    background: url(../images/cordova.png) no-repeat center top; 
     position: absolute;             
-    left: 50%;
-    top: 50%;
-    height: 50px;                  
-    width: 225px;                   
+    left: 25%;
+    top: 25%;
+    height: 50%;                  
+    width: 50%;                   
     text-align: center;
-    padding: 180px 0px 0px 0px;     
-    margin: -115px 0px 0px -112px;
 }
 
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
@@ -94,4 +91,28 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+#myImage {
+    margin: 25px;
+}
+
+.signIn {
+    display: block;
+}
+
+.socialMedia{
+    display: none;
+}
+
+.cameraScreen {
+    display: none;
+}
+
+.friends {
+    display: none;
+}
+
+.recommendations {
+    display: none;
 }

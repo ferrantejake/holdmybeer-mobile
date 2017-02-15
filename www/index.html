@@ -12,26 +12,58 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>BlankCordovaApp1</title>
-</head>
-<body>
-    <div class="app">
-        <h1>HoldMyBeer</h1>
-        <div id="deviceready" class="">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-        <button id="camera">Take a photo!</button>
-        <img id="myImage" />
-    </div>
-    <pre>
-        <span>Connected: <span id="connected"></span></span>       
-        <span>Connection: <span id="connection"></span></span>        
-        <span>Platform: <span id="platform"></span></span>
-    </pre>
 
     <script type="text/javascript" src="cordova.js"></script>
     <!-- The 'async' attribute is needed for RequireJS to work in a Windows app -->
     <script type="text/javascript" data-main="scripts/startup" src="lib/require.2.1.8.js" async></script>
+
+    <title>BlankCordovaApp1</title>
+</head>
+<body>
+    <div class="app">
+
+        <img src="images/cordova.png">
+        <h1>HoldMyBeer</h1>
+
+
+        <div id="signIn" class="signIn">
+            <button id="signInButton">Sign In!</button>
+        </div>
+
+
+        <div id="socialMedia" class="socialMedia">
+            <p>Select A Form Of Login</p>
+            <div><button id="facebook" class="socialMediaButton">Facebook</button></div>
+            <div><button id="google" class="socialMediaButton">GooglePlus</button></div>
+            <div><button id="myspace" class="socialMediaButton">MySpace</button></div>
+        </div>
+
+
+        <div id="cameraScreen" class="cameraScreen">
+            <button id="switchFriends">Friends</button>
+            <button id="switchRecommendations">Recommendations</button>
+            <button id="camera">Take a photo!</button>
+            <br />
+            <img id="myImage" width="100" />
+        </div>
+
+
+        <div id="recommendations" class="recommendations">
+            <button id="goToCam">Back To Camera</button>
+        </div>
+
+
+        <div id="friends" class="friends">
+            <h1>This is where friends will display</h1>
+            <ul>
+                <li>Friend 1</li>
+                <li>Friend 2</li>
+                <li>Friend 3</li>
+            </ul>
+            <button id="goToCam">Back To Camera</button>
+        </div>
+
+    </div>
+    
 </body>
 </html>
