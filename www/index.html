@@ -1,69 +1,116 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-    <!--
-        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
-        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <!-- The 'async' attribute is needed for RequireJS to work in a Windows app -->
-    <script type="text/javascript" data-main="scripts/startup" src="lib/require.2.1.8.js" async></script>
+    <!-- cordova script (this will be a 404 during development) -->
+	<script src="js/ng-cordova.min.js"></script>
+	<script src="cordova.js"></script>
 
-    <title>BlankCordovaApp1</title>
-</head>
-<body>
-    <div class="app">
-
-        <img src="images/cordova.png">
-        <h1>HoldMyBeer</h1>
-
-
-        <div id="signIn" class="signIn">
-            <button id="signInButton">Sign In!</button>
-        </div>
-
-
-        <div id="socialMedia" class="socialMedia">
-            <p>Select A Form Of Login</p>
-            <div><button id="facebook" class="socialMediaButton">Facebook</button></div>
-            <div><button id="google" class="socialMediaButton">GooglePlus</button></div>
-            <div><button id="myspace" class="socialMediaButton">MySpace</button></div>
-        </div>
-
-
-        <div id="cameraScreen" class="cameraScreen">
-            <button id="switchFriends">Friends</button>
-            <button id="switchRecommendations">Recommendations</button>
-            <button id="camera">Take a photo!</button>
-            <br />
-            <img id="myImage" width="100" />
-        </div>
-
-
-        <div id="recommendations" class="recommendations">
-            <button id="goToCam">Back To Camera</button>
-        </div>
-
-
-        <div id="friends" class="friends">
-            <h1>This is where friends will display</h1>
-            <ul>
-                <li>Friend 1</li>
-                <li>Friend 2</li>
-                <li>Friend 3</li>
-            </ul>
-            <button id="goToCam">Back To Camera</button>
-        </div>
-
-    </div>
-    
-</body>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+  </head>
+  <body ng-app="holdmybeer">
+    <ion-pane>
+      <ion-nav-bar class="bar-dark">
+	    <ion-nav-back-button></ion-nav-back-button>
+	  </ion-nav-bar>
+	  <ion-nav-view></ion-nav-view>
+	  
+	  <!-- LOGIN SCREEN -->
+	<script type="text/ng-template" id="login.html">
+      <ion-view view-title="Login">
+	    <ion-content class="home-content">
+		  <div class="item button button-block button-stable"
+		  ng-model="facebook"
+		  ng-click="switchscreens('home')">
+		    Login With Facebook
+		  </div>
+		  <div class="item button button-block button-stable"
+		  ng-model="google"
+		  ng-click="switchscreens('home')">
+		    Login With Google
+		  </div>
+	    </ion-content>
+	  </ion-view>
+    </script>
+	
+	<!-- HOME SCREEN -->
+	<script type="text/ng-template" id="home.html">
+      <ion-view view-title="Home">
+	    <ion-content class="home-content">
+		  <div class="item button button-block button-stable icon-left ion-person"
+		  ng-model="tasteprofile"
+		  ng-click="switchscreens('tasteprofile')">
+		    View Taste Profile
+		  </div>
+		  <div class="item button button-block button-stable icon-left ion-ios-people"
+		  ng-model="friends"
+		  ng-click="switchscreens('friends')">
+		    Friends
+		  </div>
+		  <div class="item button button-block button-stable icon-left ion-settings"
+		  ng-model="settings"
+		  ng-click="switchscreens('settings')">
+		    Settings
+		  </div>
+	    </ion-content>
+	  </ion-view>
+    </script>
+	
+	<!-- TASTE PROFILE SCREEN -->
+	<script type="text/ng-template" id="tasteprofile.html">
+      <ion-view view-title="Taste Profile">
+	    <ion-content class="tasteprofile-content">
+		  <div>Taste Profile Page</div>
+	    </ion-content>
+		<ion-content ng-controller="barcodeScanner">
+			<button class="button" ng-click="scanBarcode()">Scan</button>
+		</ion-content>
+	  </ion-view>
+    </script>
+	
+	<!-- FRIENDS SCREEN -->
+	<script type="text/ng-template" id="friends.html">
+      <ion-view view-title="Friends">
+	    <ion-content class="friends-content">
+		  <div>Friends Page</div>
+	    </ion-content>
+	  </ion-view>
+    </script>
+	
+	<!-- SETTINGS SCREEN -->
+	<script type="text/ng-template" id="settings.html">
+      <ion-view view-title="Settings">
+	    <ion-content class="settings-content">
+		  <div>Settings Page</div>
+	    </ion-content>
+	  </ion-view>
+    </script>
+    </ion-pane>
+  </body>
 </html>

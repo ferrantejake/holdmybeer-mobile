@@ -1,2 +1,0 @@
-# holdmybeer-cordova
-coolio
