@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Hold My Beer
+      <button ion-button icon-only (click)="beginScanning()">
+        <ion-icon name="barcode"></ion-icon>
+      </button>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button icon-left (click)="goToPage(1)">
+    <ion-icon name="person"></ion-icon>
+    Taste Profile
+  </button>
+  <button ion-button icon-left (click)="goToPage(2)">
+    <ion-icon name="people"></ion-icon>
+    Friends
+  </button>
+  <button ion-button icon-left (click)="goToPage(3)">
+    <ion-icon name="settings"></ion-icon>
+    Settings
+  </button>
+</ion-content>
