@@ -7,5 +7,10 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <ion-searchbar (ionInput)="getFriends($event)"></ion-searchbar>
+  <ion-list>
+    <button ion-item *ngFor="let friend of friends" (click)="itemTapped( friend )">
+      {{ friend }}
+    </button>
+  </ion-list>
 </ion-content>

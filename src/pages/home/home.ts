@@ -26,7 +26,9 @@ export class HomePage {
         this.navCtrl.push(TasteProfile);
         break;
       case 2:
-        this.navCtrl.push(FriendsList);
+        this.navCtrl.push(FriendsList, {
+          userID: 1
+        });
         break;
       case 3:
         this.navCtrl.push(Settings);
