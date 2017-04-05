@@ -49,7 +49,8 @@ export class FriendsList {
 
   }
 
-  itemTapped(friend){
+  //TODO: When the user clicks a friend take them to the friend's profile
+  friendSelected(friend){
     console.log(friend);
   }
 
