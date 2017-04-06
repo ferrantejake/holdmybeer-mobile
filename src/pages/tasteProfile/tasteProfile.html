@@ -16,14 +16,16 @@
 <ion-content padding>
   <div [ngSwitch]="view">
     <ion-list *ngSwitchCase="'suggestions'">
-      <ion-item>
-        Suggestions
-      </ion-item>
+      <ion-searchbar (ionInput)="getSuggestions($event)"></ion-searchbar>
+      <button ion-item *ngFor="let Beer of suggestions" (click)="suggestionSelected( Beer )">
+       {{ Beer }}
+      </button>
     </ion-list>
     <ion-list *ngSwitchCase="'history'">
-      <ion-item>
-        History
-      </ion-item>
+      <ion-searchbar (ionInput)="getHistory($event)"></ion-searchbar>
+      <button ion-item *ngFor="let Beer of beerLog" (click)="BeerSelected( Beer )">
+       {{ Beer }}
+      </button>
     </ion-list>
   </div>
 </ion-content>
