@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-toolbar>
+    <ion-segment [(ngModel)]="view">
+      <ion-segment-button value="suggestions">
+        Suggestions
+      </ion-segment-button>
+      <ion-segment-button value="history">
+        History
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div [ngSwitch]="view">
+    <ion-list *ngSwitchCase="'suggestions'">
+      <ion-item>
+        Suggestions
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'history'">
+      <ion-item>
+        History
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

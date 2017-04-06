@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Friends List
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getFriends($event)"></ion-searchbar>
+  <ion-list>
+    <button ion-item *ngFor="let friend of friends" (click)="friendSelected( friend )">
+      {{ friend }}
+    </button>
+  </ion-list>
+</ion-content>
