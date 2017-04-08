@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { TasteProfile } from '../tasteProfile/tasteProfile';
@@ -13,8 +13,9 @@ import { Settings } from '../settings/settings';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner) {
-    
+  userID: any;
+  constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner) {
+    this.userID = "current user";
   }
 
   //This function switches pages.
@@ -23,11 +24,13 @@ export class HomePage {
   goToPage($page){
     switch($page){
       case 1:
-        this.navCtrl.push(TasteProfile);
+        this.navCtrl.push(TasteProfile, {
+          userID: this.userID
+        });
         break;
       case 2:
         this.navCtrl.push(FriendsList, {
-          userID: 1
+          userID: this.userID
         });
         break;
       case 3:
