@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
+ import {TasteProfile} from '../tasteProfile/tasteProfile';
 
 @Component({
   selector: 'page-friendsList',
@@ -51,7 +52,9 @@ export class FriendsList {
 
   //TODO: When the user clicks a friend take them to the friend's profile
   friendSelected(friend){
-    console.log(friend);
+    this.navCtrl.push(TasteProfile, {
+      userID: friend
+    });
   }
 
   goHome(){
