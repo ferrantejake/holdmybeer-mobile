@@ -21,7 +21,7 @@ export class TasteProfile {
     this.userID = params.get("userID");
     this.initSuggestions();
     this.initHistory();
-    
+    console.log("This is " + this.userID + "'s Profile");
   }
 
   //Initialize beer suggestions for this user by calling API based on userID
