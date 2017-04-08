@@ -12,4 +12,8 @@ export class TermsOfUse {
     
   }
 
+  goHome(){
+    this.navCtrl.popToRoot();
+  }
+
 }

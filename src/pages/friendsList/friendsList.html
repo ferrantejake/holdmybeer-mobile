@@ -13,4 +13,14 @@
       {{ friend }}
     </button>
   </ion-list>
+
+
+  <ion-footer>
+    <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+    <button id="home" ion-button clear large icon-only (click)="goHome()"> 
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-footer>
 </ion-content>

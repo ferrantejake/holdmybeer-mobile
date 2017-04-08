@@ -83,7 +83,11 @@ export class TasteProfile {
     console.log(Beer);
   }
 
-  BeerSelected(Beer){
+  beerSelected(Beer){
     console.log(Beer);
+  }
+
+  goHome(){
+    this.navCtrl.popToRoot();
   }
 }

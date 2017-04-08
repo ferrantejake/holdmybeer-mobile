@@ -12,4 +12,8 @@ export class PrivacyPolicy {
     
   }
 
+  goHome(){
+    this.navCtrl.popToRoot();
+  }
+
 }

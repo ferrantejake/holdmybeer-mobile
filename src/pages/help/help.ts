@@ -12,4 +12,8 @@ export class Help {
     
   }
 
+  goHome(){
+    this.navCtrl.popToRoot();
+  }
+
 }

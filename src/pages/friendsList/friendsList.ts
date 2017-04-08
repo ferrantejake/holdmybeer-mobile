@@ -54,5 +54,9 @@ export class FriendsList {
     console.log(friend);
   }
 
+  goHome(){
+    this.navCtrl.popToRoot();
+  }
+
 
 }

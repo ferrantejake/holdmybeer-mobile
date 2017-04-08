@@ -23,9 +23,19 @@
     </ion-list>
     <ion-list *ngSwitchCase="'history'">
       <ion-searchbar (ionInput)="getHistory($event)"></ion-searchbar>
-      <button ion-item *ngFor="let Beer of beerLog" (click)="BeerSelected( Beer )">
+      <button ion-item *ngFor="let Beer of beerLog" (click)="beerSelected( Beer )">
        {{ Beer }}
       </button>
     </ion-list>
   </div>
+
+
+  <ion-footer>
+    <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+    <button id="home" ion-button clear large icon-only (click)="goHome()"> 
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-footer>
 </ion-content>
