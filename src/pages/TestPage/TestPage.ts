@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-BeerProfile',
-  templateUrl: 'BeerProfile.html'
+  selector: 'page-TestPage',
+  templateUrl: 'TestPage.html'
 })
-export class BeerProfile {
+export class TestPage {
 
   constructor(public navCtrl: NavController) {
     
@@ -15,4 +15,5 @@ export class BeerProfile {
   goHome(){
     this.navCtrl.popToRoot();
   }
+
 }

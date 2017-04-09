@@ -6,6 +6,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { TasteProfile } from '../tasteProfile/tasteProfile';
 import { FriendsList } from '../friendsList/friendsList';
 import { Settings } from '../settings/settings';
+import { BeerProfile } from '../beerProfile/beerProfile';
 
 @Component({
   selector: 'page-home',
@@ -36,6 +37,9 @@ export class HomePage {
       case 3:
         this.navCtrl.push(Settings);
         break;
+      case 4:
+        this.navCtrl.push(BeerProfile);
+        break;        
       default:
         alert("Incorrect Page Directory");
     }
