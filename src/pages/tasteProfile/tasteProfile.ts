@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
+import { BeerProfile } from '../beerProfile/beerProfile'
 
 @Component({
   selector: 'page-tasteProfile',
@@ -78,13 +79,9 @@ export class TasteProfile {
 
   }
 
-  //TODO: When the user clicks a beer take them to the beers's profile
-  suggestionSelected(Beer){
-    console.log(Beer);
-  }
-
+  //TODO: Pass what beer is being looked at to the beer profile page
   beerSelected(Beer){
-    console.log(Beer);
+    this.navCtrl.push(BeerProfile);
   }
 
   goHome(){
