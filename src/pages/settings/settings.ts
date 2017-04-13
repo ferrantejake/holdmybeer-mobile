@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { TermsOfUse } from '../termsOfUse/termsOfUse';
 import { PrivacyPolicy } from '../privacyPolicy/privacyPolicy';
@@ -12,7 +13,7 @@ import { Help } from '../help/help';
 })
 export class Settings {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner) {
     
   }
 
@@ -37,6 +38,14 @@ export class Settings {
 
   goHome(){
     this.navCtrl.popToRoot();
+  }
+
+  beginScanning(){
+    this.barcodeScanner.scan().then((barcodeData) => {
+      console.log(barcodeData.text);
+    }, (err) => {
+      alert(err);
+    });    
   }
 
 }

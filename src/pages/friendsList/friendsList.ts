@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
- import {TasteProfile} from '../tasteProfile/tasteProfile';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { TasteProfile } from '../tasteProfile/tasteProfile';
 
 @Component({
   selector: 'page-friendsList',
@@ -15,7 +16,7 @@ export class FriendsList {
   //List of current user's friends
   friends: string[];
 
-  constructor(public navCtrl: NavController, public params: NavParams) {
+  constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner) {
     this.userID = params.get("userID");
     this.initList();
 
@@ -59,6 +60,14 @@ export class FriendsList {
 
   goHome(){
     this.navCtrl.popToRoot();
+  }
+
+  beginScanning(){
+    this.barcodeScanner.scan().then((barcodeData) => {
+      console.log(barcodeData.text);
+    }, (err) => {
+      alert(err);
+    });    
   }
 
 

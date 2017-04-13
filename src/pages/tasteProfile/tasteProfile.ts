@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { BeerProfile } from '../beerProfile/beerProfile'
 
 @Component({
@@ -17,7 +18,7 @@ export class TasteProfile {
   //Current user's beer log
   beerLog: string[];
 
-  constructor(public navCtrl: NavController, public params: NavParams) {
+  constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner) {
     (this as any).view = "suggestions";
     this.userID = params.get("userID");
     this.initSuggestions();
@@ -29,7 +30,7 @@ export class TasteProfile {
   //Currently using placeholder text
   initSuggestions(){
     this.suggestions = [
-      'water',
+      'Purple Haze',
       'Coors light',
       'Mountain Dew',
       'Apple juice'
@@ -86,5 +87,13 @@ export class TasteProfile {
 
   goHome(){
     this.navCtrl.popToRoot();
+  }
+
+  beginScanning(){
+    this.barcodeScanner.scan().then((barcodeData) => {
+      console.log(barcodeData.text);
+    }, (err) => {
+      alert(err);
+    });    
   }
 }
