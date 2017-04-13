@@ -23,6 +23,7 @@ export class BeerProfile {
   srm: string = 'N/A';
   og: string = 'N/A';
   description: string = 'N/A';
+  picture: string = '';
 
   constructor(public navCtrl: NavController, public params: NavParams, public http: Http, private barcodeScanner: BarcodeScanner) {
     //this.barcode =  params.get("barcode");
@@ -37,11 +38,12 @@ export class BeerProfile {
     //this.brewery = ??
     //this.style = ??
     this.availability = data.available.name;
-    this.abv = data.abv;
+    this.abv = data.abv + '%';
     this.ibu = data.ibu;
     this.srm = data.srm.name;
     //this.og = ??
     this.description = data.description;
+    this.picture = data.labels.medium;
   }
 
   goHome(){
