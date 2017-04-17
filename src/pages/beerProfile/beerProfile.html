@@ -57,14 +57,16 @@
     </ion-row>  
   <br> <br>
 
-  <ion-footer>
+  <ion-fab bottom left>
     <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
       <ion-icon name="barcode"></ion-icon>
     </button>
+  </ion-fab>
+  <ion-fab bottom center>
     <button id="home" ion-button clear large icon-only (click)="goHome()"> 
       <ion-icon name="home"></ion-icon>
     </button>
-  </ion-footer>
+  </ion-fab>
 
 </ion-content>
 
