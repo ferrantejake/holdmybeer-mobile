@@ -23,12 +23,17 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+// Base acts as the background color
+// Contracts acts as the text background
 $colors: (
   primary:    #387ef5,
-  secondary:  #32db64,
+  secondary:  yellow,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  toolbar:(
+    base: black,
+    contrast: yellow
+  )
 );
 
 
