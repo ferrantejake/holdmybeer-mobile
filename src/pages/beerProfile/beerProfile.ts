@@ -26,7 +26,8 @@ export class BeerProfile {
   picture: string = '';
 
   constructor(public navCtrl: NavController, public params: NavParams, public http: Http, private barcodeScanner: BarcodeScanner) {
-    //this.barcode =  params.get("barcode");
+    this.barcode =  params.get("barcode");
+    console.log(this.barcode);
     this.url = 'http://holdmybeer.azurewebsites.net/beer/' + this.barcode;
     this.http.get(this.url).map(res => res.json()).subscribe(data => {
       this.initInfo(data);
@@ -52,9 +53,19 @@ export class BeerProfile {
 
   beginScanning(){
     this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData.text);
+      this.pushToBeerProfile(barcodeData.text);
     }, (err) => {
       alert(err);
     });    
   }
+
+  pushToBeerProfile(barcode)
+  {
+    if(barcode != "")
+    {
+      this.navCtrl.push(BeerProfile, {
+        barcode: barcode
+      });
+    }
+  } 
 }

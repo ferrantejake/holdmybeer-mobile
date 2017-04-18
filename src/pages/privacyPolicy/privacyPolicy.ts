@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+import { BeerProfile } from '../beerProfile/beerProfile';
+
 @Component({
   selector: 'page-privacyPolicy',
   templateUrl: 'privacyPolicy.html'
@@ -19,10 +21,20 @@ export class PrivacyPolicy {
 
   beginScanning(){
     this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData.text);
+      this.pushToBeerProfile(barcodeData.text);
     }, (err) => {
       alert(err);
     });    
   }
+
+  pushToBeerProfile(barcode)
+  {
+    if(barcode != "")
+    {
+      this.navCtrl.push(BeerProfile, {
+        barcode: barcode
+      });
+    }
+  } 
 
 }

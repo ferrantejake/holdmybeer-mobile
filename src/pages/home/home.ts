@@ -6,6 +6,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { TasteProfile } from '../tasteProfile/tasteProfile';
 import { FriendsList } from '../friendsList/friendsList';
 import { Settings } from '../settings/settings';
+import { BeerProfile } from '../beerProfile/beerProfile';
 
 @Component({
   selector: 'page-home',
@@ -43,10 +44,20 @@ export class HomePage {
 
   beginScanning(){
     this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData.text);
+      this.pushToBeerProfile(barcodeData.text);
     }, (err) => {
       alert(err);
     });    
   }
+
+  pushToBeerProfile(barcode)
+  {
+    if(barcode != "")
+    {
+      this.navCtrl.push(BeerProfile, {
+        barcode: barcode
+      });
+    }
+  }    
   
 }

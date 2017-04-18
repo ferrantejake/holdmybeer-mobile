@@ -4,6 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { TasteProfile } from '../tasteProfile/tasteProfile';
 
+import { BeerProfile } from '../beerProfile/beerProfile';
+
 @Component({
   selector: 'page-friendsList',
   templateUrl: 'friendsList.html'
@@ -64,11 +66,21 @@ export class FriendsList {
 
   beginScanning(){
     this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData.text);
+      this.pushToBeerProfile(barcodeData.text);
     }, (err) => {
       alert(err);
     });    
   }
+
+  pushToBeerProfile(barcode)
+  {
+    if(barcode != "")
+    {
+      this.navCtrl.push(BeerProfile, {
+        barcode: barcode
+      });
+    }
+  } 
 
 
 }
