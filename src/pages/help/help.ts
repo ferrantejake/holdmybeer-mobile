@@ -14,7 +14,7 @@ export class Help {
   constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner) {
     
   }
-
+  
   goHome(){
     this.navCtrl.popToRoot();
   }

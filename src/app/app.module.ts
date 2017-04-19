@@ -10,10 +10,13 @@ import { FriendsList } from '../pages/friendsList/friendsList';
 import { Settings } from '../pages/settings/settings';
 import { TermsOfUse } from '../pages/termsOfUse/termsOfUse';
 import { Help } from '../pages/help/help';
+import { Login } from '../pages/login/login';
+
 import { PrivacyPolicy } from '../pages/privacyPolicy/privacyPolicy';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     TermsOfUse,
     Help,
     PrivacyPolicy,
-    BeerProfile
+    BeerProfile,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -42,12 +46,14 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     TermsOfUse,
     Help,
     PrivacyPolicy,
-    BeerProfile
+    BeerProfile,
+    Login
   ],
   providers: [
     StatusBar,
     SplashScreen,
     BarcodeScanner,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -7,15 +7,23 @@ import { TasteProfile } from '../tasteProfile/tasteProfile';
 import { FriendsList } from '../friendsList/friendsList';
 import { Settings } from '../settings/settings';
 import { BeerProfile } from '../beerProfile/beerProfile';
+import { Login } from '../login/login';
+import * as access from '../access';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
 
   userID: any;
   constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner) {
+    const token = access.getToken();
+    if(token == undefined)
+    {
+      this.navCtrl.push(Login);
+    }
     this.userID = "current user";
   }
 
