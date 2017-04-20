@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { Device } from '@ionic-native/device';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -54,6 +55,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     SplashScreen,
     BarcodeScanner,
     InAppBrowser,
+    Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
