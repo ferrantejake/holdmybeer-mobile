@@ -32,8 +32,7 @@ export class Login {
 
         browser.on('loadstop').subscribe(data=>{
             this.url = data.url;
+            console.log(this.url);
         });
-
-        console.log(this.url);
     }
 }
