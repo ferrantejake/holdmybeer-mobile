@@ -8,8 +8,18 @@
 
 <ion-content padding>
 
-<button ion-button block (click)=login()>
-    Login to this bitch
-</button>
+<ion-item>
+  <ion-avatar>
+      <img src="assets/img/logo-image-for-login-page.jpg" alt = "HMB LOGO"
+          style = "align-items: center; width:200px; height:200px;">  
+  </ion-avatar>
+  <h1>Hold My Beer</h1>
+</ion-item>
+
+<ion-fab middle center>
+    <button ion-button block (click)=login()> 
+        Login with Facebook
+    </button>    
+</ion-fab>
 
 </ion-content>
