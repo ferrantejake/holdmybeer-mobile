@@ -34,10 +34,9 @@ export class Login {
             if(data.url.includes('/api/account/verify'))
             {
                 this.http.get(this.verifyUrl + this.uniqueId).map(res=>res.json()).subscribe(data=>{
-                    this.token = data.token;
-                    access.setToken(this.token);
+                    console.log(data.token);
+                    access.setToken(data.token);
                     browser.close();
-                    console.log(access.getToken());
                     this.navCtrl.pop();
                 });
             }

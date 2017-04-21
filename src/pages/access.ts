@@ -1,9 +1,9 @@
-const token: string = undefined;
+let _token: string = undefined;
 
 export function getToken(){
-    return token;
+    return _token;
 }
 
 export function setToken(token: string){
-    this.token = token;
+    _token = token;
 }
