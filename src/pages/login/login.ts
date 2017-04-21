@@ -16,9 +16,9 @@ import * as access from '../access';
 })
 export class Login {
 
-    token: string = '';
+    token: string = 'token';
     uniqueId: string = '';
-    verifyUrl: string = 'http://dev-holdmybeer.azurewebsites.net/api/account/verify/';
+    verifyUrl: string = 'http://holdmybeer.azurewebsites.net/api/account/verify/';
 
     constructor(public navCtrl: NavController, private iab: InAppBrowser, private http: Http, private device: Device) {
         this.uniqueId = device.uuid;
@@ -31,16 +31,15 @@ export class Login {
             'http://holdmybeer.azurewebsites.net/api/account/login?uniqueId=' + this.uniqueId);
         
         browser.on('loadstop').subscribe(data=>{
-            if(data.url.includes('verify'))
+            if(data.url.includes('/api/account/verify'))
             {
-                console.log(data.url);
-                console.log(this.verifyUrl + this.uniqueId);
-        
                 this.http.get(this.verifyUrl + this.uniqueId).map(res=>res.json()).subscribe(data=>{
                     this.token = data.token;
+                    access.setToken(this.token);
+                    browser.close();
+                    console.log(access.getToken());
+                    this.navCtrl.pop();
                 });
-
-                console.log(this.token);
             }
         });
     }
