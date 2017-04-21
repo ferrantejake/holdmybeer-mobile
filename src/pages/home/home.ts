@@ -21,11 +21,11 @@ export class HomePage {
   
   constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner) {
     const token = access.getToken();
-    if(token == undefined)
+   if(token == undefined)
     {
       this.navCtrl.push(Login);
     }
-    
+   
     this.userID = "current user";
   }
 
