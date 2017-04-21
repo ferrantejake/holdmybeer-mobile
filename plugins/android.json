@@ -27,7 +27,20 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.holdmybeer819018"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.ionicframework.holdmybeer819018"
+        },
+        "cordova-plugin-http": {
+            "PACKAGE_NAME": "com.ionicframework.holdmybeer819018"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.holdmybeer819018"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.holdmybeer819018"
+        }
+    }
 }

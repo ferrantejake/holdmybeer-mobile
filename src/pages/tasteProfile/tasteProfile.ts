@@ -16,7 +16,7 @@ export class TasteProfile {
   //userID denotes user
   userID: any;
   //Current query in search
-  searchQuery: string='';
+  searchQuery: string = '';
   //Current user's suggestions
   suggestions: string[];
   //Current user's beer log
@@ -33,51 +33,51 @@ export class TasteProfile {
   //I apologize but it's 6:37AM and I don't know promises well enough to deal with ansynchronous stuff right now 
   //EDIT: It's 7:12 and still not working, I need to go home and take a break
   //I'm just trying to seed the suggestions so I can get the suggestions and it turned out stupid, my bad
-  initSuggestions(){
-      if(!this.done){
-        console.log(this.done);
-        setTimeout(function(){this.initSuggestions()}, 100);
-      }
-      else{
-        console.log(this.beerLog);
-        const seed = this.beerLog[0].drinkId;
-        this.http.get('http://holdmybeer.azurewebsites.net/api/beer/' + seed + '/related', {},{
-          'Authorization': access.getToken(),
-          'Content-type': 'application/json'
-        }).then(data => {
-          try{
-            const sug = JSON.parse(data.data);
-            this.suggestions = sug.items;
-          }
-          catch(err)
-          {
-            alert(err);
-          }
-        });
-      }
+  initSuggestions() {
+    if (!this.done) {
+      console.log(this.done);
+      setTimeout(function () { this.initSuggestions() }, 100);
     }
+    else {
+      console.log('beerlog:', this.beerLog);
+      const seed = this.beerLog[0].drinkId;
+      console.log('seed:', seed);
+      this.http.get('http://holdmybeer.azurewebsites.net/api/beer/' + seed + '/related', {}, {
+        'Authorization': access.getToken(),
+        'Content-type': 'application/json'
+      }).then(data => {
+        try {
+          const sug = JSON.parse(data.data);
+          this.suggestions = sug.items;
+          console.log('data.data <<>> items:', data.data, '<<>>', this.suggestions);
+        }
+        catch (err) {
+          alert(err);
+        }
+      });
+    }
+  }
 
-  initHistory(){
-    this.http.get('http://holdmybeer.azurewebsites.net/api/account/' + this.userID + '/log', {},{
+  initHistory() {
+    this.http.get('http://holdmybeer.azurewebsites.net/api/account/' + this.userID + '/log', {}, {
       'Authorization': access.getToken(),
       'Content-type': 'application/json'
     }).then(data => {
-      try{
+      try {
         const log = JSON.parse(data.data);
         this.beerLog = log.items;
         console.log(log.items);
         console.log(this.beerLog);
         this.done = true;
       }
-      catch(err)
-      {
+      catch (err) {
         alert(err);
       }
     });
   }
 
   //DOESN'T WORK
-  getSuggestions(ev: any){
+  getSuggestions(ev: any) {
     //Reset list back to full list
     this.initSuggestions();
 
@@ -85,7 +85,7 @@ export class TasteProfile {
     let search = ev.target.value;
 
     //If the value is an empty string don't filter the list
-    if(search && search.trim() != ''){
+    if (search && search.trim() != '') {
       this.suggestions = this.suggestions.filter((Beer) => {
         return (Beer.toLowerCase().indexOf(search.toLowerCase()) > -1);
       })
@@ -94,7 +94,7 @@ export class TasteProfile {
   }
 
   //DOESN'T WORK
-  getHistory(ev: any){
+  getHistory(ev: any) {
     //Reset list back to full list
     this.initHistory();
 
@@ -102,7 +102,7 @@ export class TasteProfile {
     let search = ev.target.value;
 
     //If the value is an empty string don't filter the list
-    if(search && search.trim() != ''){
+    if (search && search.trim() != '') {
       this.beerLog = this.beerLog.filter((Beer) => {
         return (Beer.toLowerCase().indexOf(search.toLowerCase()) > -1);
       })
@@ -110,31 +110,29 @@ export class TasteProfile {
 
   }
 
-  beerSelected(drinkUpc){
+  beerSelected(drinkUpc) {
     this.navCtrl.push(BeerProfile, {
       barcode: drinkUpc
     });
   }
 
-  goHome(){
+  goHome() {
     this.navCtrl.popToRoot();
   }
 
-  beginScanning(){
+  beginScanning() {
     this.barcodeScanner.scan().then((barcodeData) => {
       this.pushToBeerProfile(barcodeData.text);
     }, (err) => {
       alert(err);
-    });    
+    });
   }
 
-  pushToBeerProfile(barcode)
-  {
-    if(barcode != "")
-    {
+  pushToBeerProfile(barcode) {
+    if (barcode != "") {
       this.navCtrl.push(BeerProfile, {
         barcode: barcode
       });
     }
-  } 
+  }
 }
