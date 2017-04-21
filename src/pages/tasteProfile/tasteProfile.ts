@@ -22,18 +22,20 @@ export class TasteProfile {
   //Current user's beer log
   beerLog;
   done = false;
+  seed = '';
 
   constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner, private http: HTTP) {
     (this as any).view = "suggestions";
     this.userID = params.get("userID");
     this.initHistory();
-    this.initSuggestions();
+    setTimeout(this.initSuggestions(), 5000);
   }
 
   //I apologize but it's 6:37AM and I don't know promises well enough to deal with ansynchronous stuff right now 
   //EDIT: It's 7:12 and still not working, I need to go home and take a break
   //I'm just trying to seed the suggestions so I can get the suggestions and it turned out stupid, my bad
   initSuggestions() {
+<<<<<<< HEAD
     if (!this.done) {
       console.log(this.done);
       setTimeout(function () { this.initSuggestions() }, 100);
@@ -56,6 +58,21 @@ export class TasteProfile {
         }
       });
     }
+=======
+    this.http.get('http://holdmybeer.azurewebsites.net/api/beer/' + this.seed + '/related', {}, {
+      'Authorization': access.getToken(),
+      'Content-type': 'application/json'
+    }).then(data => {
+      try {
+        const sug = JSON.parse(data.data);
+        console.log(sug);
+        this.suggestions = sug.items;
+      }
+      catch (err) {
+        alert(err);
+      }
+    });
+>>>>>>> 8ccc7f20123abd666569b52a4fb3347f79d2d153
   }
 
   initHistory() {
@@ -68,7 +85,7 @@ export class TasteProfile {
         this.beerLog = log.items;
         console.log(log.items);
         console.log(this.beerLog);
-        this.done = true;
+        this.seed = this.beerLog.drinkId;
       }
       catch (err) {
         alert(err);

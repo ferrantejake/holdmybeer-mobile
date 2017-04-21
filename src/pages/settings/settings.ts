@@ -6,7 +6,11 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { TermsOfUse } from '../termsOfUse/termsOfUse';
 import { PrivacyPolicy } from '../privacyPolicy/privacyPolicy';
 import { Help } from '../help/help';
+import { Login } from '../login/login';
+import { HTTP } from '@ionic-native/http'
 import { BeerProfile } from '../beerProfile/beerProfile';
+
+import * as access from '../access';
 
 @Component({
   selector: 'page-settings',
@@ -14,7 +18,7 @@ import { BeerProfile } from '../beerProfile/beerProfile';
 })
 export class Settings {
 
-  constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner, private http: HTTP) {
     
   }
 
@@ -30,7 +34,11 @@ export class Settings {
         this.navCtrl.push(PrivacyPolicy);
         break;
       case 3:
-        this.navCtrl.push(Help);
+        this.http.post('http://holdmybeer.azurewebsites.net/api/account/logout', {}, {
+        'Authorization': access.getToken(),
+        'Content-type': 'application/json'
+        });
+        this.navCtrl.push(Login);
         break;
       default:
         alert("Incorrect Page Directory");
