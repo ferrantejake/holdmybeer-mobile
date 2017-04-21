@@ -46,5 +46,6 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "holdmybeer: An Ionic project"
+  "description": "holdmybeer: An Ionic project",
+  "version": "1.0.0"
 }
