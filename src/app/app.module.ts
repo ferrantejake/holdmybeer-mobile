@@ -18,6 +18,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { HTTP } from '@ionic-native/http';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     BarcodeScanner,
     InAppBrowser,
     Device,
+    HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

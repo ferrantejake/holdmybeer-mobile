@@ -9,8 +9,8 @@
 <ion-content padding>
   <ion-searchbar (ionInput)="getFriends($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let friend of friends" (click)="friendSelected( friend )">
-      {{ friend }}
+    <button ion-item *ngFor="let friend of friends" (click)="friendSelected( friend.id )">
+      {{ friend.nick }} {{friend.last}}
     </button>
   </ion-list>
 

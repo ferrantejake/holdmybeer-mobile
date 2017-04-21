@@ -4,6 +4,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { BeerProfile } from '../beerProfile/beerProfile';
 
+import { HTTP } from '@ionic-native/http';
+import * as access from '../access'
+
 
 @Component({
   selector: 'page-tasteProfile',
@@ -19,7 +22,7 @@ export class TasteProfile {
   //Current user's beer log
   beerLog: string[];
 
-  constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner, private http: HTTP) {
     (this as any).view = "suggestions";
     this.userID = params.get("userID");
     this.initSuggestions();
@@ -31,22 +34,30 @@ export class TasteProfile {
   //Currently using placeholder text
   initSuggestions(){
     this.suggestions = [
-      'Purple Haze',
-      'Coors light',
-      'Mountain Dew',
-      'Apple juice'
+      'Bud Light',
+      'Natty light',
+      'Corona',
+      'Coors'
     ];
   }
 
   //Initialize beer history for this user by calling API based on userID
   //Currently using placeholder text
   initHistory(){
-    this.beerLog = [
-      'Bud Light',
-      'Natty light',
-      'Corona',
-      'Coors'
-    ];
+    this.http.get('http://holdmybeer.azurewebsites.net/api/account/' + this.userID + '/log', {},{
+      'Authorization': access.getToken(),
+      'Content-type': 'application/json'
+    }).then(data => {
+      try{
+        const log = JSON.parse(data.data);
+        this.beerLog = log.items;
+        console.log(this.beerLog);
+      }
+      catch(err)
+      {
+        alert(err);
+      }
+    });
   }
 
   getSuggestions(ev: any){
@@ -82,8 +93,10 @@ export class TasteProfile {
   }
 
   //TODO: Pass what beer is being looked at to the beer profile page
-  beerSelected(Beer){
-    this.navCtrl.push(BeerProfile);
+  beerSelected(drinkUpc){
+    this.navCtrl.push(BeerProfile, {
+      barcode: drinkUpc
+    });
   }
 
   goHome(){

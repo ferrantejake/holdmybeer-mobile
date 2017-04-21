@@ -25,8 +25,6 @@ export class HomePage {
     {
       this.navCtrl.push(Login);
     }
-   
-    this.userID = "current user";
   }
 
   //This function switches pages.

@@ -23,8 +23,8 @@
     </ion-list>
     <ion-list *ngSwitchCase="'history'">
       <ion-searchbar (ionInput)="getHistory($event)"></ion-searchbar>
-      <button ion-item *ngFor="let Beer of beerLog" (click)="beerSelected( Beer )">
-       {{ Beer }}
+      <button ion-item *ngFor="let Beer of beerLog" (click)="beerSelected( Beer.drinkId )">
+       {{ Beer.drinkId }}
       </button>
     </ion-list>
   </div>
