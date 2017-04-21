@@ -27,13 +27,14 @@ $font-path: "../assets/fonts";
 // Contracts acts as the text background
 $colors: (
   primary:    #3b5998,
-  secondary:  yellow,
+  secondary: (
+    base:     #ffcf06,
+    contrast: black,),
   danger:     #f53d3d,
   light:      #f4f4f4,
   toolbar:(
-    base: black,
-    contrast: yellow
-  )
+    base:     black,
+    contrast: #ffcf06 )
 );
 
 
