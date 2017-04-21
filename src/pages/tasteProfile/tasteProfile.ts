@@ -35,30 +35,6 @@ export class TasteProfile {
   //EDIT: It's 7:12 and still not working, I need to go home and take a break
   //I'm just trying to seed the suggestions so I can get the suggestions and it turned out stupid, my bad
   initSuggestions() {
-<<<<<<< HEAD
-    if (!this.done) {
-      console.log(this.done);
-      setTimeout(function () { this.initSuggestions() }, 100);
-    }
-    else {
-      console.log('beerlog:', this.beerLog);
-      const seed = this.beerLog[0].drinkId;
-      console.log('seed:', seed);
-      this.http.get('http://holdmybeer.azurewebsites.net/api/beer/' + seed + '/related', {}, {
-        'Authorization': access.getToken(),
-        'Content-type': 'application/json'
-      }).then(data => {
-        try {
-          const sug = JSON.parse(data.data);
-          this.suggestions = sug.items;
-          console.log('data.data <<>> items:', data.data, '<<>>', this.suggestions);
-        }
-        catch (err) {
-          alert(err);
-        }
-      });
-    }
-=======
     this.http.get('http://holdmybeer.azurewebsites.net/api/beer/' + this.seed + '/related', {}, {
       'Authorization': access.getToken(),
       'Content-type': 'application/json'
@@ -72,7 +48,6 @@ export class TasteProfile {
         alert(err);
       }
     });
->>>>>>> 8ccc7f20123abd666569b52a4fb3347f79d2d153
   }
 
   initHistory() {
