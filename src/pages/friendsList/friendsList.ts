@@ -36,9 +36,6 @@ export class FriendsList {
       try {
         const userInfo = JSON.parse(data.data);
         this.friends = userInfo.friends;
-        console.log(this.friends);
-        console.log(this.friends[0]);
-        //console.log(this.friends[0].nick);
       } catch (e) { console.log(e); }
     }).catch(err => {
       alert(err);

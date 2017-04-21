@@ -17,8 +17,8 @@
   <div [ngSwitch]="view">
     <ion-list *ngSwitchCase="'suggestions'">
       <ion-searchbar (ionInput)="getSuggestions($event)"></ion-searchbar>
-      <button ion-item *ngFor="let Beer of suggestions" (click)="beerSelected( Beer )">
-       {{ Beer }}
+      <button ion-item *ngFor="let Beer of suggestions" (click)="beerSelected( Beer.drinkId )">
+       {{ Beer.drinkId }}
       </button>
     </ion-list>
     <ion-list *ngSwitchCase="'history'">

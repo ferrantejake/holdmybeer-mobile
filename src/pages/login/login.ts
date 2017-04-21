@@ -22,8 +22,6 @@ export class Login {
 
     constructor(public navCtrl: NavController, private iab: InAppBrowser, private http: Http, private device: Device) {
         this.uniqueId = device.uuid;
-        
-        console.log(this.uniqueId);
     }
 
     login() {
@@ -34,7 +32,6 @@ export class Login {
             if(data.url.includes('/api/account/verify'))
             {
                 this.http.get(this.verifyUrl + this.uniqueId).map(res=>res.json()).subscribe(data=>{
-                    console.log(data.token);
                     access.setToken(data.token);
                     browser.close();
                     this.navCtrl.pop();

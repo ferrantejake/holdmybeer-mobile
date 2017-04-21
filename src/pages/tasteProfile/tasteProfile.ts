@@ -20,29 +20,43 @@ export class TasteProfile {
   //Current user's suggestions
   suggestions: string[];
   //Current user's beer log
-  beerLog: string[];
+  beerLog;
+  done = false;
 
   constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner, private http: HTTP) {
     (this as any).view = "suggestions";
     this.userID = params.get("userID");
-    this.initSuggestions();
     this.initHistory();
-    console.log("This is " + this.userID + "'s Profile");
+    this.initSuggestions();
   }
 
-  //Initialize beer suggestions for this user by calling API based on userID
-  //Currently using placeholder text
+  //I apologize but it's 6:37AM and I don't know promises well enough to deal with ansynchronous stuff right now 
+  //EDIT: It's 7:12 and still not working, I need to go home and take a break
+  //I'm just trying to seed the suggestions so I can get the suggestions and it turned out stupid, my bad
   initSuggestions(){
-    this.suggestions = [
-      'Bud Light',
-      'Natty light',
-      'Corona',
-      'Coors'
-    ];
-  }
+      if(!this.done){
+        console.log(this.done);
+        setTimeout(function(){this.initSuggestions()}, 100);
+      }
+      else{
+        console.log(this.beerLog);
+        const seed = this.beerLog[0].drinkId;
+        this.http.get('http://holdmybeer.azurewebsites.net/api/beer/' + seed + '/related', {},{
+          'Authorization': access.getToken(),
+          'Content-type': 'application/json'
+        }).then(data => {
+          try{
+            const sug = JSON.parse(data.data);
+            this.suggestions = sug.items;
+          }
+          catch(err)
+          {
+            alert(err);
+          }
+        });
+      }
+    }
 
-  //Initialize beer history for this user by calling API based on userID
-  //Currently using placeholder text
   initHistory(){
     this.http.get('http://holdmybeer.azurewebsites.net/api/account/' + this.userID + '/log', {},{
       'Authorization': access.getToken(),
@@ -51,7 +65,9 @@ export class TasteProfile {
       try{
         const log = JSON.parse(data.data);
         this.beerLog = log.items;
+        console.log(log.items);
         console.log(this.beerLog);
+        this.done = true;
       }
       catch(err)
       {
@@ -60,6 +76,7 @@ export class TasteProfile {
     });
   }
 
+  //DOESN'T WORK
   getSuggestions(ev: any){
     //Reset list back to full list
     this.initSuggestions();
@@ -76,6 +93,7 @@ export class TasteProfile {
 
   }
 
+  //DOESN'T WORK
   getHistory(ev: any){
     //Reset list back to full list
     this.initHistory();
@@ -92,7 +110,6 @@ export class TasteProfile {
 
   }
 
-  //TODO: Pass what beer is being looked at to the beer profile page
   beerSelected(drinkUpc){
     this.navCtrl.push(BeerProfile, {
       barcode: drinkUpc
