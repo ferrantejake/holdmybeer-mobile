@@ -19,6 +19,7 @@ export class FriendsList {
   searchQuery: string = '';
   //List of current user's friends
   friends: string[];
+  fulllist: string[];
 
   constructor(public navCtrl: NavController, public params: NavParams, private barcodeScanner: BarcodeScanner, private http: HTTP) {
     this.userID = params.get("userID");
@@ -36,15 +37,17 @@ export class FriendsList {
       try {
         const userInfo = JSON.parse(data.data);
         this.friends = userInfo.friends;
+        this.fulllist = userInfo.friends;
       } catch (e) { console.log(e); }
     }).catch(err => {
       alert(err);
     });
+
   }
 
   getFriends(ev: any) {
     //Reset list back to full list
-    this.initList();
+    this.friends = this.fulllist;
 
     //Set val to current search query
     let search = ev.target.value;
@@ -52,7 +55,7 @@ export class FriendsList {
     //If the value is an empty string don't filter the list
     if (search && search.trim() != '') {
       this.friends = this.friends.filter((friend) => {
-        return (friend.toLowerCase().indexOf(search.toLowerCase()) > -1);
+        return ((friend as any).nick.toLowerCase().indexOf(search.toLowerCase()) > -1);
       })
     }
 
