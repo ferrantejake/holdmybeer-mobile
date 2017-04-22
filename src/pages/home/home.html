@@ -1,25 +1,38 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = toolbar>
     <ion-title>
       Hold My Beer
-      <button ion-button icon-only (click)="beginScanning()">
-        <ion-icon name="barcode"></ion-icon>
-      </button>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button icon-left (click)="goToPage(1)">
+<ion-row><ion-col> </ion-col></ion-row>
+<ion-row><ion-col> </ion-col></ion-row>
+<ion-row><ion-col> </ion-col></ion-row>
+<ion-row><ion-col> </ion-col></ion-row>
+<ion-row><ion-col> </ion-col></ion-row>
+<ion-row><ion-col> </ion-col></ion-row> 
+  <ion-content padding>
+  <button ion-button large full color = secondary icon-left (click)="goToPage(1)">
     <ion-icon name="person"></ion-icon>
     Taste Profile
   </button>
-  <button ion-button icon-left (click)="goToPage(2)">
+  <ion-row><ion-col></ion-col></ion-row>
+  <button ion-button large full color = secondary icon-left (click)="goToPage(2)">
     <ion-icon name="people"></ion-icon>
     Friends
   </button>
-  <button ion-button icon-left (click)="goToPage(3)">
+  <ion-row><ion-col></ion-col></ion-row>
+  <button ion-button large full color = secondary icon-left (click)="goToPage(3)">
     <ion-icon name="settings"></ion-icon>
     Settings
   </button>
+
+
+   <ion-fab bottom center>
+    <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

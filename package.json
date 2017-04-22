@@ -19,8 +19,11 @@
     "@angular/platform-browser": "2.4.8",
     "@angular/platform-browser-dynamic": "2.4.8",
     "@angular/platform-server": "2.4.8",
-    "@ionic-native/barcode-scanner": "^3.4.4",
+    "@ionic-native/barcode-scanner": "^3.5.0",
     "@ionic-native/core": "3.1.0",
+    "@ionic-native/device": "^3.5.0",
+    "@ionic-native/http": "^3.5.0",
+    "@ionic-native/in-app-browser": "^3.5.0",
     "@ionic-native/splash-screen": "3.1.0",
     "@ionic-native/status-bar": "3.1.0",
     "@ionic/storage": "2.0.0",
@@ -43,5 +46,6 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "holdmybeer: An Ionic project"
+  "description": "holdmybeer: An Ionic project",
+  "version": "1.0.0"
 }

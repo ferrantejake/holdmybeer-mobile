@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = toolbar>
     <ion-title>
       Settings
     </ion-title>
@@ -7,5 +7,31 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list>
+     <button large ion-item (click)="goToPage(1)">
+      <ion-icon name="paper"></ion-icon>
+       Terms of Use
+     </button>
+     <button large full ion-item (click)="goToPage(2)">
+      <ion-icon name="lock"></ion-icon>
+       Privacy Policy
+     </button>
+     <button large full ion-item (click)="goToPage(3)">
+      <ion-icon name="md-key"></ion-icon>
+       Logout
+     </button>
+  </ion-list>
+
+
+  <ion-fab bottom center>
+    <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab bottom left>
+    <button id="home" ion-button clear large icon-only (click)="goHome()"> 
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-fab>
   
 </ion-content>

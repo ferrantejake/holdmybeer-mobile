@@ -1,11 +1,84 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = toolbar>
     <ion-title>
       Beer Profile
-    </ion-title>
+    </ion-title> 
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+
+<ion-content class="BeerProfile">
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="picture" >
+      </ion-avatar>
+      <h1>{{ name }}</h1>
+      
+        <button ion-button icon-left color = "thumbsup" (click)= "goHome()">    
+          <ion-icon name="md-thumbs-up"></ion-icon>
+              Good Beer! 
+        </button>   
+      <button ion-button icon-left color = "thumbsdown" (click)= "goHome()">    
+      <ion-icon name="md-thumbs-down"></ion-icon>
+          Bad Beer! 
+    </button>   
   
+    </ion-item>
+  </ion-list>
+    <ion-row>
+      <ion-col><div>Brewery:</div></ion-col>
+      <ion-col><div>{{ brewery }}</div></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><div>Style:</div></ion-col>
+      <ion-col><div>{{ style }}</div></ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col><div>Availability:</div></ion-col>
+      <ion-col><div>{{ availability }}</div></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><div>ABV:</div></ion-col>
+      <ion-col><div>{{ abv }}</div></ion-col>
+    </ion-row>  
+
+    <ion-row>
+      <ion-col><div>IBU:</div></ion-col>
+      <ion-col><div>{{ ibu }}</div></ion-col>
+    </ion-row>    
+    
+    <ion-row>
+      <ion-col><div>SRM:</div></ion-col>
+      <ion-col><div>{{ srm }}</div></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><div>OG:</div></ion-col>
+      <ion-col><div>{{ og }}</div></ion-col>
+    </ion-row> 
+
+      <ion-row>
+      <ion-col><div>{{ description }}</div></ion-col>
+    </ion-row>  
+  <br> <br>
+
+<ion-fab bottom center>
+    <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom left>
+    <button id="home" ion-button clear large icon-only (click)="goHome()"> 
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-fab>
+
+
 </ion-content>
+

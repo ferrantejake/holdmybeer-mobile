@@ -1,0 +1,46 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-http": {
+            "PACKAGE_NAME": "holdmybeer"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "holdmybeer"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "holdmybeer"
+        }
+    }
+}

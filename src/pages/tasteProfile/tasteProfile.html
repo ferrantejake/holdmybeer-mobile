@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = toolbar>
     <ion-toolbar>
-    <ion-segment [(ngModel)]="view">
+    <ion-segment color = secondary [(ngModel)]="view">
       <ion-segment-button value="suggestions">
         Suggestions
       </ion-segment-button>
@@ -16,14 +16,29 @@
 <ion-content padding>
   <div [ngSwitch]="view">
     <ion-list *ngSwitchCase="'suggestions'">
-      <ion-item>
-        Suggestions
-      </ion-item>
+      <ion-searchbar (ionInput)="getSuggestions($event)"></ion-searchbar>
+      <button ion-item *ngFor="let Beer of suggestions" (click)="beerSelected( Beer.drinkId )">
+       {{ Beer.drinkId }}
+      </button>
     </ion-list>
     <ion-list *ngSwitchCase="'history'">
-      <ion-item>
-        History
-      </ion-item>
+      <ion-searchbar (ionInput)="getHistory($event)"></ion-searchbar>
+      <button ion-item *ngFor="let Beer of beerLog" (click)="beerSelected( Beer.drinkId )">
+       {{ Beer.drinkId }}
+      </button>
     </ion-list>
   </div>
+
+
+  <ion-fab bottom center>
+    <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
+      <ion-icon name="barcode"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab bottom left>
+    <button id="home" ion-button clear large icon-only (click)="goHome()"> 
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-fab>
+  
 </ion-content>

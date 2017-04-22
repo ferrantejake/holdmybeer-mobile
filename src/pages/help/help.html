@@ -1,19 +1,13 @@
 <ion-header>
   <ion-navbar color = toolbar>
     <ion-title>
-      Friends List
+      Help
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getFriends($event)"></ion-searchbar>
-  <ion-list>
-    <button ion-item *ngFor="let friend of friends" (click)="friendSelected( friend.id )">
-      {{ friend.nick }} {{friend.last}}
-    </button>
-  </ion-list>
-
+  
 
   <ion-fab bottom center>
     <button id="scanner" ion-button clear large icon-only (click)="beginScanning()"> 
@@ -25,5 +19,5 @@
       <ion-icon name="home"></ion-icon>
     </button>
   </ion-fab>
-
+  
 </ion-content>
